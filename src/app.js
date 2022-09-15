@@ -7,6 +7,8 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
+console.log('less do it');
+
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
 // você deve usar o arquivo server.js para executar sua aplicação 
