@@ -19,12 +19,10 @@ const listSpecificProducts = async (id) => {
 
 const insertItem = async (name) => {
   const addedProduct = await connection.execute(
-    'INSERT INTO StoreManager.products name VALUE ?',
+    'INSERT INTO StoreManager.products (name) VALUE (?)',
     [name],
   );
-
-  console.log(addedProduct);
-  return addedProduct;
+  return addedProduct[0].insertId;
 };
 
 module.exports = {

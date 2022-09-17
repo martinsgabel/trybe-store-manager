@@ -17,9 +17,8 @@ const listSpecificProduct = async (id) => {
 };
 
 const addNewProduct = async (name) => {
-  const addedProduct = await productsModel.insertItem(name);
-
-  return addedProduct;
+  const newId = await productsModel.insertItem(name);
+  return { id: newId, name };
 };
 
 module.exports = {

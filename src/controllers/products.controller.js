@@ -16,7 +16,7 @@ const listSpecificProduct = async (req, res) => {
 };
 
 const addNewProduct = async (req, res) => {
-  console.log(req.body);
+  const { name } = req.body;
 
   const addedProduct = await productsService.addNewProduct(name);
 
