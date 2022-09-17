@@ -1,10 +1,9 @@
 const productsService = require('../services/products.service');
 
-const listAllProducts = async (_req, _res) => {
+const listAllProducts = async (_req, res) => {
   const message = await productsService.listProducts();
-  console.log(message);
 
-  // res.status(200).json(message);
+  return res.status(200).json(message);
 };
 
 const listSpecificProduct = async (req, res) => {
@@ -16,7 +15,16 @@ const listSpecificProduct = async (req, res) => {
   res.status(200).json(message);
 };
 
+const addNewProduct = async (req, res) => {
+  console.log(req.body);
+
+  const addedProduct = await productsService.addNewProduct(name);
+
+  return res.status(201).json(addedProduct);
+};
+
 module.exports = {
   listAllProducts,
   listSpecificProduct,
+  addNewProduct,
 };
