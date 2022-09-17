@@ -29,8 +29,27 @@ const addNewProduct = async (name) => {
   return { type: null, message: addedProduct };
 };
 
+const editSpecificProduct = async (id, name) => {
+  if (!name) return { type: 400, message: '"name" is required' };
+
+  const isNameLong = await validation.nameLength(name);
+
+  if (!isNameLong) {
+    return { type: 422, message: '"name" length must be at least 5 characters long' };
+  }
+
+  const product = await productsModel.listSpecificProducts(id);
+  if (!product) return { type: 404, message: 'Product not found' };
+
+  await productsModel.editSpecificProduct(id, name);
+  const message = await productsModel.listSpecificProducts(id);
+
+  return { type: null, message };
+};
+
 module.exports = {
   listProducts,
   listSpecificProduct,
   addNewProduct,
+  editSpecificProduct,
 };
