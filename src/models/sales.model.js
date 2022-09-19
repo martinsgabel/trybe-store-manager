@@ -25,7 +25,17 @@ const listSpecificSales = async (id) => {
   return camelize(result);
 };
 
+const addSale = async ({ productId, quantity }) => {
+  const result = await connection.execute(
+    'INSERT INTO StoreManager.products (product_id, quantity) VALUES (?, ?)',
+    [...productId, ...quantity],
+  );
+
+  return result[0].insertId;
+};
+
 module.exports = {
   listAllSales,
   listSpecificSales,
+  addSale,
 };

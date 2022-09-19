@@ -6,7 +6,6 @@ const listProducts = async () => {
   const [result] = await connection.execute(
     'SELECT * FROM StoreManager.products',
   );
-  console.log(result);
   return camelize(result);
 };
 
@@ -15,7 +14,6 @@ const listSpecificProduct = async (id) => {
     'SELECT * FROM StoreManager.products WHERE id = ?',
     [id],
   );
-  console.log(result);
   return camelize(result);
 };
 
