@@ -7,7 +7,7 @@ const listProducts = async () => {
 };
 
 const listSpecificProduct = async (id) => {
-  const product = await productsModel.listSpecificProducts(id);
+  const product = await productsModel.listSpecificProduct(id);
 
   if (!product) return { type: 404, message: 'Product not found' };
 
