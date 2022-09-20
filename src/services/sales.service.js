@@ -8,7 +8,6 @@ const listAllSales = async () => {
 
 const listSpecificSales = async (id) => {
   const sales = await salesModel.listSpecificSales(id);
-  console.log(sales);
 
   if (!sales || !sales.length) return { type: 404, message: 'Sale not found' };
 

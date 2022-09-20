@@ -38,11 +38,11 @@ const editSpecificProduct = async (id, name) => {
     return { type: 422, message: '"name" length must be at least 5 characters long' };
   }
 
-  const product = await productsModel.listSpecificProducts(id);
+  const product = await productsModel.listSpecificProduct(id);
   if (!product) return { type: 404, message: 'Product not found' };
 
   await productsModel.editSpecificProduct(id, name);
-  const message = await productsModel.listSpecificProducts(id);
+  const message = await productsModel.listSpecificProduct(id);
 
   return { type: null, message };
 };
