@@ -44,4 +44,24 @@ describe('Testes na camada CONTROLLER', () => {
       productsService.listSpecificProduct.restore();
     })
   })
+
+  describe('Adicionando novo produto', () => {
+
+    const req = { body: { name: "RWBY Doll" } };
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    it('Adicionando novo produto com sucesso', async () => {
+      sinon.stub(productsService, 'addNewProduct').resolves(mocks.serviceAddedProduct);
+
+      await productsController.addNewProduct(req, res);
+
+      chai.expect(res.status.calledWith(201)).to.be.equal(true);
+      chai.expect(res.json.calledWith(mocks.serviceAddedProduct.message)).to.be.equal(true);
+
+      productsService.addNewProduct.restore();
+    })
+  })
 });

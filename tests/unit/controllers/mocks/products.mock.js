@@ -17,7 +17,16 @@ const serviceFoundSpecificProduct = {
   }]
 };
 
+const serviceAddedProduct = {
+  type: null,
+  message: {
+    id: 21,
+    name: "RWBY Doll"
+  }
+};
+
 module.exports = {
   serviceList,
   serviceFoundSpecificProduct,
+  serviceAddedProduct,
 };
