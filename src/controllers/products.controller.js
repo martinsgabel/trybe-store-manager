@@ -36,9 +36,20 @@ const editSpecificProduct = async (req, res) => {
   return res.status(200).json(message);
 };
 
+const deletingProduct = async (req, res) => {
+  const { id } = req.params;
+
+  const { type, message } = await productsService.deletingProduct(id);
+
+  if (type) return res.status(type).json(message);
+
+  return res.status(204).json();
+};
+
 module.exports = {
   listAllProducts,
   listSpecificProduct,
   addNewProduct,
   editSpecificProduct,
+  deletingProduct,
 };

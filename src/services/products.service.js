@@ -9,7 +9,7 @@ const listProducts = async () => {
 const listSpecificProduct = async (id) => {
   const product = await productsModel.listSpecificProduct(id);
 
-  if (!product) return { type: 404, message: 'Product not found' };
+  if (!product.length) return { type: 404, message: 'Product not found' };
 
   return { type: null, message: product };
 };
@@ -47,9 +47,20 @@ const editSpecificProduct = async (id, name) => {
   return { type: null, message };
 };
 
+const deletingProduct = async (id) => {
+  const product = await productsModel.listSpecificProduct(id);
+
+  if (!product.length) return { type: 404, message: 'Product not found' };
+
+  await productsModel.deletingProduct(id);
+
+  return { type: null, message: null };
+};
+
 module.exports = {
   listProducts,
   listSpecificProduct,
   addNewProduct,
   editSpecificProduct,
+  deletingProduct,
 };

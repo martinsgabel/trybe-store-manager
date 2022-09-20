@@ -10,10 +10,11 @@ const listProducts = async () => {
 };
 
 const listSpecificProduct = async (id) => {
-  const [[result]] = await connection.execute(
+  const [result] = await connection.execute(
     'SELECT * FROM StoreManager.products WHERE id = ?',
     [id],
   );
+  console.log(result);
   return camelize(result);
 };
 
@@ -33,9 +34,17 @@ const editSpecificProduct = async (id, name) => {
   );
 };
 
+const deletingProduct = async (id) => {
+  await connection.execute(
+    'DELETE FROM StoreManager.products WHERE id = ?',
+    [id],
+  );
+};
+
 module.exports = {
   listProducts,
   listSpecificProduct,
   insertItem,
   editSpecificProduct,
+  deletingProduct,
 };
