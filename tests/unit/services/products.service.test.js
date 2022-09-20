@@ -49,7 +49,7 @@ describe('Testando a camada service', () => {
     it('Adicionando novo produto com sucesso', async () => {
       sinon.stub(productsModel, 'insertItem').resolves(21);
 
-      const result = await productsService.addNewProduct(mocks.newProduct);
+      const result = await productsService.addNewProduct(mocks.newProduct.name);
 
       chai.expect(result).to.deep.equal(mocks.addedProduct);
 
@@ -57,7 +57,7 @@ describe('Testando a camada service', () => {
     })
 
     it('Adicionando novo produto sem nome', async () => {
-      const result = await productsService.addNewProduct({ name: null });
+      const result = await productsService.addNewProduct();
 
       chai.expect(result).to.deep.equal(mocks.nameRequired);
     })

@@ -7,4 +7,6 @@ router.get('/', salesController.listAllSales);
 
 router.get('/:id', salesController.listSpecificSales);
 
+// router.post('/', salesController.addSale);
+
 module.exports = router;
